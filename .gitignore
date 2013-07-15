@@ -1,4 +1,7 @@
+secrets.py
+
 *.py[cod]
+*.swp
 
 # C extensions
 *.so
