@@ -49,11 +49,17 @@ class Side(models.Model):
     players = models.ManyToManyField(Player)
 
     player_a = models.ForeignKey(Player, related_name='player_a')
-    player_b = models.ForeignKey(Player, related_name='player_b')
+    player_b = models.ForeignKey(Player, related_name='player_b', null=True)
 
     type = models.CharField(
         max_length=1,
         choices=SideType.CHOICES,
         default=SideType.CHOICES[0][0],
     )
+
+    class Meta:
+        ''' Maintain uniqueness of pairs by respecting ordering of
+            player_a.id < player_b.id
+        '''
+        unique_together = ('player_a', 'player_b')
 
