@@ -1,4 +1,5 @@
 secrets.py
+site_specifics.py
 
 *.py[cod]
 *.swp

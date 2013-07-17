@@ -1,6 +1,7 @@
 # Django settings for tennisdb project.
 from configurations import Settings
 from secrets import DevSecrets, ProdSecrets
+from site_specifics import DevSiteSpecifics, ProdSiteSpecifics
 
 
 class Common(Settings):
@@ -96,12 +97,6 @@ class Common(Settings):
     # Python dotted path to the WSGI application used by Django's runserver.
     WSGI_APPLICATION = 'tennisdb.wsgi.application'
 
-    TEMPLATE_DIRS = (
-        # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-        # Always use forward slashes, even on Windows.
-        # Don't forget to use absolute paths, not relative paths.
-    )
-
     INSTALLED_APPS = (
         'django.contrib.auth',
         'django.contrib.contenttypes',
@@ -148,14 +143,14 @@ class Common(Settings):
     }
 
 
-class Dev(DevSecrets, Common):
+class Dev(DevSecrets, DevSiteSpecifics, Common):
     """
     The in-development settings and the default configuration.
     """
     pass
 
 
-class Prod(ProdSecrets, Common):
+class Prod(ProdSecrets, ProdSiteSpecifics, Common):
     """
     The in-production settings.
     """
