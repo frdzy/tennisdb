@@ -1,0 +1,12 @@
+{% block branding %}
+<h1 id="site-name">TennisDB</h1>
+{% endblock %}
+<a href="{% url 'players:index' %}">
+    All Players
+</a>
+<h2>
+{{ player }}
+</h2>
+<ul>
+    <li>Age: {{ age }}</li>
+</ul>
